@@ -1,1 +1,1 @@
-# Front-End
+# Front-End Educational Studies
