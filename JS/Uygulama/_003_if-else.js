@@ -3,6 +3,7 @@
 const kelime = "kayak"
 const tersKelime = kelime.split("").reverse().join("")
 console.log(tersKelime);
+
 if(kelime === tersKelime){
     console.log(`${kelime} kelimesi bir palindromdur.`);
 } else {
