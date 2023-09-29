@@ -1,6 +1,6 @@
 // -------------------For, Başlangıç Bitiş Arası Sayıların Toplamı-----------------------
 
-// kullanıcıdan bir başlangıç sayısı bir de bitiş sayısı isteyin. Bir for döngüsü yaratarak başlangıç sayısından bitiş sayısına kadar bütün sayıları toplayın. toplamı ekrana yazdırın (başlangıç ve bitiş sayısı dahil)
+// Kullanıcıdan bir başlangıç sayısı bir de bitiş sayısı isteyin. Bir for döngüsü yaratarak başlangıç sayısından bitiş sayısına kadar bütün sayıları toplayın. toplamı ekrana yazdırın (başlangıç ve bitiş sayısı dahil)
 
 //  let sayiBaslangic = parseInt(prompt("Başlangıç sayı giriniz."))
 //  let sayiBitis = parseInt(prompt("Bitiş sayısını giriniz."))
