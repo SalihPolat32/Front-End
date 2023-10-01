@@ -189,7 +189,23 @@ console.log("Diller:", diller.join(", "));
         dataScience:['Python', 'R', 'D3.js']
       }
     }
-    
+
+    const newStudent = Object.assign({}, student);
+
+    // 1
+    newStudent.skills.frontEnd.push({skill: "BootStrap", level: 8});
+
+    // 2
+    newStudent.skills.backEnd.push({skill: "Express", level: 9});
+
+    // 3
+    newStudent.skills.dataBase.push({skill: "SQL", level: 8});
+
+    // 4
+    newStudent.skills.dataScience.push("SQL");
+
+    console.log(newStudent);
+
 // Kopyalanan nesne çıktısı şöyle görünmelidir:
 //    {
 //     name: 'David',
