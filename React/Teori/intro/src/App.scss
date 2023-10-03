@@ -1,4 +1,17 @@
+@import "assets/fonts/Roboto/font.scss";
+
+body {
+  font-family: "Roboto";
+}
+
 $bg-color: #282c34;
+
+@mixin color($name) {
+  .App-#{$name} {
+    color: lighten(red, 20%);
+    @content;
+  }
+}
 
 .App {
   text-align: center;
@@ -26,15 +39,49 @@ $bg-color: #282c34;
       color: red;
     }
   }
+
+  @include color(paragraph) {
+    background-color: rgba(#0000ff, 0.6);
+  }
+}
+
+@mixin animation($value) {
+  -webkit-animation: $value;
+  -moz-animation: $value;
+  -o-animation: $value;
+  -ms-transition: $value;
+  animation: $value;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    @include animation(App-logo-spin infinite 20s linear);
   }
 }
 
-@keyframes App-logo-spin {
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+
+  @-o-keyframes #{$name} {
+    @content;
+  }
+
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@include keyframes(App-logo-spin) {
   from {
     transform: rotate(0deg);
   }
