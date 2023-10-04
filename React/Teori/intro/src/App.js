@@ -5,15 +5,38 @@ import Paragraph from "./components/Paragraph";
 import Image from "./components/Image";
 import Header from "./components/Header";
 import ConditionalButton from "./components/ConditionalButton";
+import Tabs from "./components/Tabs";
 
 import logo from "./logo.svg";
 import "./App.scss";
+
+const items = [
+  {
+    key: "1",
+    label: "Tab 1",
+    children: "Content of Tab Pane 1",
+  },
+  {
+    key: "2",
+    label: "Tab 2",
+    children: "Content of Tab Pane 2",
+  },
+  {
+    key: "3",
+    label: "Tab 3",
+    children: "Content of Tab Pane 3",
+  },
+];
 
 function App() {
   const style = { display: "block" /*, backgroundColor: "blue"*/ };
 
   const onClickParagraph = () => {
     console.log("clicked");
+  };
+
+  const onChange = (key) => {
+    console.log(key);
   };
 
   return (
@@ -37,6 +60,7 @@ function App() {
           Learn React
         </Anchor>
         <ConditionalButton />
+        <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
       </Header>
     </div>
   );
