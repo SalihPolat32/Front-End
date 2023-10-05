@@ -5,10 +5,10 @@ const Skills = ({title, skills}) => {
     <section>
         <h2>{title}</h2>
         <ul>
-            {skills.map( skill => <li>
+            {skills.map( (skill) => (<li>
                 <h4>{skill.title}</h4>
                 <p>{skill.description}</p>
-            </li> )}
+            </li> ))}
         </ul>
     </section>
   )
