@@ -21,3 +21,13 @@ export const getUsers = async () => {
   // localStorage.setItem("token", response.data[0].firstname);
   return response.data;
 };
+
+/**
+ * get user by id
+ * @param {number} id user id
+ * @returns {object} user object
+ */
+export const getUser = async (id) => {
+  const response = await axios.get(`${USER_URL}/${id}`);
+  return response.data;
+};

@@ -8,6 +8,8 @@ import Permission from "../../pages/permission";
 import Book from "../../pages/book";
 import Todo from "../../pages/Todo";
 import Login from "../../pages/login";
+import UserDetail from "../../pages/user/detail";
+import UseMemoPage from "../../pages/usememo";
 
 import PermissionContext from "../../context/PermissionContext";
 
@@ -69,6 +71,11 @@ const MainLayout = () => {
                 icon: <UploadOutlined />,
                 label: <Link to="/login">Login</Link>,
               },
+              {
+                key: "6",
+                icon: <UploadOutlined />,
+                label: <Link to="/useMemo">useMemo</Link>,
+              },
             ]}
           />
         </Sider>
@@ -105,10 +112,12 @@ const MainLayout = () => {
               {permissions.some((p) => p === "user.tab.visible") && (
                 <Route path="/user" element={<User />} />
               )}
+              <Route path="/user/:userid/:username" element={<UserDetail />} />
               <Route path="/permission" element={<Permission />} />
               <Route path="/book" element={<Book />} />
               <Route path="/todo" element={<Todo />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/useMemo" element={<UseMemoPage />} />
             </Routes>
           </Content>
         </Layout>

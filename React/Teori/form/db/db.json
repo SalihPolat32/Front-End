@@ -55,7 +55,6 @@
       "id": 9
     }
   ],
-  
   "book": [
     {
       "book": "Yüzüklerin Efendisi",
@@ -78,7 +77,6 @@
       "id": 4
     }
   ],
-
   "permission": [
     {
       "name": "user.tab.visible",
