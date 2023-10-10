@@ -3,27 +3,21 @@ import React, { useContext, useState } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { Layout, Menu, Button, theme } from "antd";
 
-import User from "../../pages/user";
-import Permission from "../../pages/permission";
-import Book from "../../pages/book";
 import Todo from "../../pages/Todo";
-import Login from "../../pages/login";
-
-import PermissionContext from "../../context/PermissionContext";
 
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
+
 } from "@ant-design/icons";
+
 import "./index.scss";
 
 const { Header, Sider, Content } = Layout;
 
 const MainLayout = () => {
-  const { permissions } = useContext(PermissionContext);
+
   const [collapsed, setCollapsed] = useState(false);
 
   const {
@@ -40,34 +34,10 @@ const MainLayout = () => {
             mode="inline"
             defaultSelectedKeys={["1"]}
             items={[
-              ...(permissions.some((p) => p === "user.tab.visible")
-                ? [
-                    {
-                      key: "1",
-                      icon: <UserOutlined />,
-                      label: <Link to="/user">User</Link>,
-                    },
-                  ]
-                : []),
               {
-                key: "2",
-                icon: <VideoCameraOutlined />,
-                label: <Link to="/permission">Permission</Link>,
-              },
-              {
-                key: "3",
-                icon: <UploadOutlined />,
-                label: <Link to="/book">Book</Link>,
-              },
-              {
-                key: "4",
+                key: "1",
                 icon: <UploadOutlined />,
                 label: <Link to="/todo">Todo</Link>,
-              },
-              {
-                key: "5",
-                icon: <UploadOutlined />,
-                label: <Link to="/login">Login</Link>,
               },
             ]}
           />
@@ -79,7 +49,6 @@ const MainLayout = () => {
               background: colorBgContainer,
             }}
           >
-            {permissions.some((p) => p === "button.collapsed.visible") && (
               <Button
                 type="text"
                 icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -90,7 +59,6 @@ const MainLayout = () => {
                   height: 64,
                 }}
               />
-            )}
           </Header>
           <Content
             style={{
@@ -101,14 +69,8 @@ const MainLayout = () => {
             }}
           >
             <Routes>
-              <Route path="/" element={<User />} exact />
-              {permissions.some((p) => p === "user.tab.visible") && (
-                <Route path="/user" element={<User />} />
-              )}
-              <Route path="/permission" element={<Permission />} />
-              <Route path="/book" element={<Book />} />
+              <Route path="/" element={<Todo />} exact />
               <Route path="/todo" element={<Todo />} />
-              <Route path="/login" element={<Login />} />
             </Routes>
           </Content>
         </Layout>

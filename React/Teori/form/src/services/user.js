@@ -18,5 +18,6 @@ export const addUser = async (data) => {
  */
 export const getUsers = async () => {
   const response = await axios.get(USER_URL);
+  // localStorage.setItem("token", response.data[0].firstname);
   return response.data;
 };

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 const AddNote = ({onAdd}) => {
+  
     const [text, setText] = useState("")
 
     const handleSubmit = (e) => {

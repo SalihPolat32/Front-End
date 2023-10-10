@@ -1,18 +1,23 @@
-import { Button, Form, Input, Switch } from "antd";
-import { addPermission } from "../../services/permission";
+import { useContext } from "react";
 
-const Permission = () => {
+import { Button, Form, Input } from "antd";
+
+import TodoContext from "../../context/TodoContext";
+import { ADD_TODO } from "../../reducer/todoReducer";
+
+const TodoForm = () => {
+  const { dispatch } = useContext(TodoContext);
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
-    addPermission(values);
+    dispatch({ type: ADD_TODO, todo: values.todo });
     form.resetFields();
   };
 
   return (
     <Form
       form={form}
-      name="permission"
+      name="todoForm"
       labelCol={{
         span: 6,
       }}
@@ -26,30 +31,16 @@ const Permission = () => {
       autoComplete="off"
     >
       <Form.Item
-        label="Permission Name"
-        name="name"
+        label="Todo"
+        name="todo"
         rules={[
           {
             required: true,
-            message: "Please input your name!",
+            message: "Please input the todo item!",
           },
         ]}
       >
         <Input />
-      </Form.Item>
-
-      <Form.Item
-        initialValue={false}
-        label="Value"
-        name="value"
-        rules={[
-          {
-            required: true,
-            message: "Please input the value!",
-          },
-        ]}
-      >
-        <Switch />
       </Form.Item>
 
       <Form.Item
@@ -59,11 +50,11 @@ const Permission = () => {
         }}
       >
         <Button type="primary" htmlType="submit">
-          Submit
+          Save
         </Button>
       </Form.Item>
     </Form>
   );
 };
 
-export default Permission;
+export default TodoForm;
