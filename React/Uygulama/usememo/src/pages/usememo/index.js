@@ -1,5 +1,5 @@
-import { useCallback, useMemo, useState } from "react";
 import { Button, Form, InputNumber } from "antd";
+import { useMemo, useState } from "react";
 
 const UseMemoPage = () => {
   const [values, setValues] = useState({});
@@ -8,9 +8,9 @@ const UseMemoPage = () => {
     return values.x + values.y;
   }, [values]);
 
-  const onFinishWithUseCallBack = useCallback((serkan) => {
+  const onFinish = (serkan) => {
     setValues(serkan);
-  }, []);
+  };
 
   return (
     <>
@@ -25,7 +25,7 @@ const UseMemoPage = () => {
         style={{
           maxWidth: 600,
         }}
-        onFinish={onFinishWithUseCallBack}
+        onFinish={onFinish}
         autoComplete="off"
       >
         <Form.Item
