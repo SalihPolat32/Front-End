@@ -7,17 +7,24 @@ import Roles from "./roles";
 import Permissions from "./permissions";
 import Tasks from "./tasks";
 import Flows from "./flows";
+import Settings from "./settings";
 
 import {
   CarryOutOutlined,
   PieChartOutlined,
+  SettingOutlined,
   SkinOutlined,
   SlidersOutlined,
   UnorderedListOutlined,
   UserOutlined,
 } from "@ant-design/icons";
+import { useContext, useEffect } from "react";
+import { getPermissionsByDefaultUser } from "../services/permission";
+import PermissionContext from "../context/PermissionContext";
 
 const MainPage = ({ onChangeTheme }) => {
+  const { setPermissions } = useContext(PermissionContext);
+
   const menu = [
     {
       key: "m1",
@@ -49,7 +56,19 @@ const MainPage = ({ onChangeTheme }) => {
       icon: <CarryOutOutlined />,
       label: <Link to="/flow">Flows</Link>,
     },
+    {
+      key: "m7",
+      icon: <SettingOutlined />,
+      label: <Link to="/settings">Settings</Link>,
+    },
   ];
+
+  useEffect(() => {
+    getPermissionsByDefaultUser().then((permissions) => {
+      setPermissions(permissions);
+      localStorage.setItem("permissions", permissions);
+    });
+  }, []);
 
   return (
     <BrowserRouter>
@@ -61,6 +80,7 @@ const MainPage = ({ onChangeTheme }) => {
           <Route path="/permission" element={<Permissions />} />
           <Route path="/task" element={<Tasks />} />
           <Route path="/flow" element={<Flows />} />
+          <Route path="/settings" element={<Settings />} />
         </Routes>
       </MainLayout>
     </BrowserRouter>
